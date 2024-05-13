@@ -1,0 +1,29 @@
+Started by user <jenkins_user>
+[Pipeline] Start of Pipeline (hide)
+[Pipeline] node
+Running on appserver in /var/jenkins_home/workspace/CD
+[Pipeline] {
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] stage
+[Pipeline] { (Run Ansible Playbook)
+[Pipeline] sh
++ whoami
+jenkins
++ cat /etc/hostname
+0c9b2d6c40f5
+[Pipeline] ansiblePlaybook
+[CD] $ sshpass ******** ansible-playbook /var/jenkins_home/download.yml -u jenkins -k
+[1;35m[WARNING]: No inventory was parsed, only implicit localhost is available[0m
+[1;35m[WARNING]: provided hosts list is empty, only localhost is available. Note that[0m
+[1;35mthe implicit localhost does not match 'all'[0m
+
+PLAY [Download jar file] *******************************************************
+
+TASK [Gathering Facts] *********************************************************
+[0;32mok: [localhost][0m
+
+TASK [Download from nexus] *****************************************************
+[0;33mchanged: [localhost][0m
+
+TASK [Define java and run] *****************************************************

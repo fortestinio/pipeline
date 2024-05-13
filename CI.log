@@ -1,0 +1,173 @@
+Started by user <jenkins_user>
+[Pipeline] Start of Pipeline
+[Pipeline] node
+Running on stage in /var/jenkins_home/workspace/CI
+[Pipeline] {
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] stage
+[Pipeline] { (Declarative: Tool Install)
+[Pipeline] tool
+[Pipeline] envVarsForTool
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] stage
+[Pipeline] { (Build)
+[Pipeline] tool
+[Pipeline] envVarsForTool
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] script
+[Pipeline] {
+[Pipeline] git
+The recommended git tool is: NONE
+using credential <git_ID>
+Fetching changes from the remote Git repository
+Checking out Revision 81e6ade6c3ccfab723358a36ae8588caad7cd832 (refs/remotes/origin/main)
+Commit message: "pom.xml"
+ > git rev-parse --resolve-git-dir /var/jenkins_home/workspace/CI/.git # timeout=10
+ > git config remote.origin.url https://github.com/fortestinio/application.git # timeout=10
+Fetching upstream changes from https://github.com/fortestinio/application.git
+ > git --version # timeout=10
+ > git --version # 'git version 2.43.0'
+using GIT_ASKPASS to set credentials <git_ID>
+ > git fetch --tags --force --progress -- https://github.com/fortestinio/application.git +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > git rev-parse refs/remotes/origin/main^{commit} # timeout=10
+ > git config core.sparsecheckout # timeout=10
+ > git checkout -f 81e6ade6c3ccfab723358a36ae8588caad7cd832 # timeout=10
+ > git branch -a -v --no-abbrev # timeout=10
+ > git branch -D main # timeout=10
+ > git checkout -b main 81e6ade6c3ccfab723358a36ae8588caad7cd832 # timeout=10
+ > git rev-list --no-walk e95409c650f1a36b360711178a03376c2bcb568a # timeout=10
+[Pipeline] }
+[Pipeline] // script
+[Pipeline] sh
++ mvn -Dmaven.test.failure.ignore=true clean package
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] --------------------------< com.example:demo >--------------------------
+[INFO] Building demo 0.0.1
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- maven-clean-plugin:3.3.2:clean (default-clean) @ demo ---
+[INFO] Deleting /var/jenkins_home/workspace/CI/target
+[INFO] 
+[INFO] --- maven-resources-plugin:3.3.1:resources (default-resources) @ demo ---
+[INFO] Copying 1 resource from src/main/resources to target/classes
+[INFO] Copying 0 resource from src/main/resources to target/classes
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.11.0:compile (default-compile) @ demo ---
+[INFO] Changes detected - recompiling the module! :source
+[INFO] Compiling 2 source files with javac [debug release 17] to target/classes
+[INFO] 
+[INFO] --- maven-resources-plugin:3.3.1:testResources (default-testResources) @ demo ---
+[INFO] skip non existing resourceDirectory /var/jenkins_home/workspace/CI/src/test/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.11.0:testCompile (default-testCompile) @ demo ---
+[INFO] Changes detected - recompiling the module! :dependency
+[INFO] Compiling 1 source file with javac [debug release 17] to target/test-classes
+[INFO] 
+[INFO] --- maven-surefire-plugin:3.1.2:test (default-test) @ demo ---
+[INFO] Using auto detected provider org.apache.maven.surefire.junitplatform.JUnitPlatformProvider
+[INFO] 
+[INFO] -------------------------------------------------------
+[INFO]  T E S T S
+[INFO] -------------------------------------------------------
+[INFO] Running com.example.demo.DemoApplicationTests
+11:27:10.674 [main] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [com.example.demo.DemoApplicationTests]: DemoApplicationTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+11:27:11.369 [main] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration com.example.demo.DemoApplication for test class com.example.demo.DemoApplicationTests
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::                (v3.2.5)
+
+2024-05-13T11:27:13.968Z  INFO 1439 --- [demo] [           main] com.example.demo.DemoApplicationTests    : Starting DemoApplicationTests using Java 17.0.11 with PID 1439 (started by jenkins in /var/jenkins_home/workspace/CI)
+2024-05-13T11:27:13.971Z  INFO 1439 --- [demo] [           main] com.example.demo.DemoApplicationTests    : No active profile set, falling back to 1 default profile: "default"
+2024-05-13T11:27:22.666Z  INFO 1439 --- [demo] [           main] com.example.demo.DemoApplicationTests    : Started DemoApplicationTests in 10.5 seconds (process running for 16.797)
+OpenJDK 64-Bit Server VM warning: Sharing is only supported for boot loader classes because bootstrap classpath has been appended
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 17.00 s -- in com.example.demo.DemoApplicationTests
+[INFO] 
+[INFO] Results:
+[INFO] 
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0
+[INFO] 
+[INFO] 
+[INFO] --- maven-jar-plugin:3.3.0:jar (default-jar) @ demo ---
+[INFO] Building jar: /var/jenkins_home/workspace/CI/target/demo-0.0.1.jar
+[INFO] 
+[INFO] --- spring-boot-maven-plugin:3.2.5:repackage (repackage) @ demo ---
+[INFO] Replacing main artifact /var/jenkins_home/workspace/CI/target/demo-0.0.1.jar with repackaged archive, adding nested dependencies in BOOT-INF/.
+[INFO] The original artifact has been renamed to /var/jenkins_home/workspace/CI/target/demo-0.0.1.jar.original
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  38.201 s
+[INFO] Finished at: 2024-05-13T11:27:30Z
+[INFO] ------------------------------------------------------------------------
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Upload to Nexus Repository Manager)
+[Pipeline] tool
+[Pipeline] envVarsForTool
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] script
+[Pipeline] {
+[Pipeline] readMavenPom
+[Pipeline] findFiles
+[Pipeline] echo
+demo-0.0.1.jar target/demo-0.0.1.jar false 19764218 1715599650559
+[Pipeline] fileExists
+[Pipeline] echo
+*** File: target/demo-0.0.1.jar, group: com.example, packaging: jar, version 0.0.1
+[Pipeline] nexusArtifactUploader
+Uploading artifact demo-0.0.1.jar started....
+GroupId: com.example
+ArtifactId: demo
+Classifier: 
+Type: jar
+Version: 0.0.1
+File: demo-0.0.1.jar
+Repository:Local_maven
+Uploading artifact pom.xml started....
+GroupId: com.example
+ArtifactId: demo
+Classifier: 
+Type: pom
+Version: 0.0.1
+File: pom.xml
+Repository:Local_maven
+Uploading: http://<nexus_IP>:8081/repository/Local_maven/com/example/demo/0.0.1/demo-0.0.1.jar
+10 % completed (2.2 MB / 20 MB).
+20 % completed (4.1 MB / 20 MB).
+30 % completed (6.1 MB / 20 MB).
+40 % completed (8.1 MB / 20 MB).
+50 % completed (10 MB / 20 MB).
+60 % completed (12 MB / 20 MB).
+70 % completed (14 MB / 20 MB).
+80 % completed (16 MB / 20 MB).
+90 % completed (18 MB / 20 MB).
+100 % completed (20 MB / 20 MB).
+[Pipeline] }
+[Pipeline] // script
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // node
+[Pipeline] End of Pipeline
+Finished: SUCCESS

@@ -1,0 +1,12 @@
+---
+- name: Download jar file
+  hosts: localhost
+  tasks:
+    - name: Download from nexus
+      ansible.builtin.get_url:
+        url: http://<IP>:8081/repository/Local_maven/com/example/demo/0.0.1/demo-0.0.1.jar
+        dest: /tmp/demo.jar
+        mode: '0755'
+    - name: Define java and run
+      shell: "USEDJAVA=$(which java);$USEDJAVA -jar /tmp/demo.jar"
+...

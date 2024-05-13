@@ -1,0 +1,24 @@
+pipeline {
+    agent {
+        node {
+            label 'appserver' 
+        }
+    }
+    environment {
+        ANSIBLE_HOST_KEY_CHECKING = 'false'
+    }
+    stages {
+        stage('Run Ansible Playbook') {
+            steps {
+                sh 'whoami; cat /etc/hostname';
+				ansiblePlaybook(
+                    playbook: '/var/jenkins_home/download.yml',
+                    inventory: '',
+                    colorized: 'true',
+                    credentialsId: 'agent_ID'
+                )
+            }
+        
+        }
+    }
+}
