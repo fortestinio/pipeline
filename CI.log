@@ -23,7 +23,7 @@ Running on stage in /var/jenkins_home/workspace/CI
 [Pipeline] {
 [Pipeline] git
 The recommended git tool is: NONE
-using credential <git_ID>
+using credential <github_ID>
 Fetching changes from the remote Git repository
 Checking out Revision 81e6ade6c3ccfab723358a36ae8588caad7cd832 (refs/remotes/origin/main)
 Commit message: "pom.xml"
@@ -32,7 +32,7 @@ Commit message: "pom.xml"
 Fetching upstream changes from https://github.com/fortestinio/application.git
  > git --version # timeout=10
  > git --version # 'git version 2.43.0'
-using GIT_ASKPASS to set credentials <git_ID>
+using GIT_ASKPASS to set credentials <github_ID>
  > git fetch --tags --force --progress -- https://github.com/fortestinio/application.git +refs/heads/*:refs/remotes/origin/* # timeout=10
  > git rev-parse refs/remotes/origin/main^{commit} # timeout=10
  > git config core.sparsecheckout # timeout=10

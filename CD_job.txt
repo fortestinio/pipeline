@@ -15,7 +15,7 @@ pipeline {
                     playbook: '/var/jenkins_home/download.yml',
                     inventory: '',
                     colorized: 'true',
-                    credentialsId: 'agent_ID'
+                    credentialsId: '<agent_ID>'
                 )
             }
         
