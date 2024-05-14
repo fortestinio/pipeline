@@ -12,7 +12,7 @@ pipeline {
             steps {
                 sh 'whoami; cat /etc/hostname';
 				ansiblePlaybook(
-                    playbook: '/var/jenkins_home/download.yml',
+                    playbook: '<home_path>/download.yml',
                     inventory: '',
                     colorized: 'true',
                     credentialsId: '<agent_ID>'

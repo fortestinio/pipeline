@@ -7,7 +7,7 @@ RUN apt-get update && apt-get install -y git
 RUN mkdir /var/run/sshd
 EXPOSE 22
 RUN sed -i 's/PermitRootLogin prohibit-password/PermitRootLogin no/' /etc/ssh/sshd_config
-RUN useradd -ms /bin/bash jenkins -d /var/jenkins_home
-RUN usermod -aG sudo jenkins
+RUN useradd -ms /bin/bash <username> -d <home_path>
+RUN usermod -aG sudo <username>
 RUN echo "<username>:<password>" | chpasswd
 CMD ["/usr/sbin/sshd", "-D"]

@@ -7,12 +7,12 @@ RUN apt-get update && apt-get install -y ansible-core
 RUN mkdir /var/run/sshd
 EXPOSE 22
 RUN sed -i 's/PermitRootLogin prohibit-password/PermitRootLogin no/' /etc/ssh/sshd_config
-RUN useradd -ms /bin/bash jenkins -d /var/jenkins_home
-RUN usermod -aG sudo jenkins
+RUN useradd -ms /bin/bash <username> -d <home_path>
+RUN usermod -aG sudo <username>
 RUN echo "<username>:<password>" | chpasswd
-RUN touch /var/jenkins_home/download.yml
-RUN chown jenkins:jenkins /var/jenkins_home/download.yml
-RUN chmod 700 /var/jenkins_home/download.yml
+RUN touch <home_path>/download.yml
+RUN chown <username>:<group> <home_path>/download.yml
+RUN chmod 700 <home_path>/download.yml
 RUN echo '\
 ---\n\
 - name: Download jar file\n\
@@ -27,7 +27,7 @@ RUN echo '\
       shell: "USEDJAVA=$(which java);$USEDJAVA -jar /tmp/demo.jar"\n\
 ...\n\
 '\
->>  /var/jenkins_home/download.yml 
+>>  <home_path>/download.yml 
 CMD ["/usr/sbin/sshd", "-D"]
 
 

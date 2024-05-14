@@ -13,8 +13,8 @@ pipeline {
     environment {
         NEXUS_VERSION = "nexus3"
         NEXUS_PROTOCOL = "http"
-        NEXUS_URL = "<IP>:8081"
-        NEXUS_REPOSITORY = "Local_maven"
+        NEXUS_URL = "<container_IP>:8081"
+        NEXUS_REPOSITORY = "<repository_name>"
         NEXUS_CREDENTIAL_ID = "<nexus_ID>"
     }
 
@@ -23,8 +23,8 @@ pipeline {
 			steps {
 				script {
 					git branch: 'main',
-					credentialsId: '<github_ID>',
-					url: 'https://github.com/fortestinio/Test1.git'
+					//credentialsId: '<github_ID>',
+					url: 'https://github.com/fortestinio/application.git'
 				}
 				sh "mvn -Dmaven.test.failure.ignore=true clean package"; 
 				sh "curl -G $NEXUS_URL | head -10"
